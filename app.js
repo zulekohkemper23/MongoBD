@@ -8,6 +8,7 @@ var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var authenticated = require('./authenticate');
 var config = require('./config');
+const cors = require('cors');
 
 
 var indexRouter = require('./routes/index');
@@ -58,7 +59,7 @@ app.use('/users', usersRouter);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(cors());
 app.use('/dishes', dishRouter);
 app.use('/promotions', promoRouter);
 app.use('/leaders', leaderRouter);
